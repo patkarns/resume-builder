@@ -1,13 +1,14 @@
 
 import React from 'react';
 
-// import Education from './Education.js';
+import AboutYou from './Components/AboutYou/AboutYou.js';
 import Education from './Components/Education/Education.js';
 import Experience from './Components/Experience/Experience.js';
 import Skills from './Components/Skills/Skills.js';
 import TechExp from './Components/TechExp/TechExp.js'
 import OtherExp from './Components/OtherExp/OtherExp.js'
 import Projects from './Components/Projects/Projects.js';
+import Experience from './Components/Experience/Experience.js';
 import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
 import School from './Components/School/School';
 import GeneratedResume from './Components/GeneratedResume/GeneratedResume.js';
@@ -29,8 +30,8 @@ class Parent extends React.Component {
         this.addOtherExp = this.addOtherExp.bind(this);
                       
         this.state = {
-            activeStep: 1,
-            steps: ['Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars', 'Generate!'],
+            activeStep: 0,
+            steps: ['About You', 'Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars', 'Generate!'],
             educationChanges: {},
             skillChanges: {},
             schools: [<School key={1} handleChange={this.handleChange} />],
@@ -52,23 +53,23 @@ class Parent extends React.Component {
     }
 
     async handleChange(step, changes) {
-        if (step === 0) {
+        if (step === 1) {
             const educationChanges = { ...this.state.educationChanges };
             Object.keys(changes).map(changedAttribute => {
                 return educationChanges[changedAttribute] = changes[changedAttribute];
             });
             console.log('skillChanges')
             return await this.setState({ ...this.state, educationChanges });
-        } else if (step === 1) {
+        } else if (step === 2) {
             const skillChanges = { ...this.state.skillChanges };
             Object.keys(changes).map(changedAttribute => {
                 console.log('skillChanges')
                 skillChanges[changedAttribute] = changes[changedAttribute];
             });
             return await this.setState({ ...this.state, skillChanges });
-        } else if (step === 2) {
-
         } else if (step === 3) {
+
+        } else if (step === 4) {
             console.log('parent handleChange', changes)
             const projectChanges = [...changes];
             return await this.setState({ ...this.state, projectChanges });
@@ -124,31 +125,32 @@ class Parent extends React.Component {
                     ))}
                 </Stepper>
                 <Button disabled={state.activeStep < 1} onClick={this.handlePrev}>Prev</Button>
-                <Button disabled={state.activeStep > 4} onClick={this.handleNext}>Next</Button>
+                <Button disabled={state.activeStep > 5} onClick={this.handleNext}>Next</Button>
                 {/* <Button onClick={this.handleSubmit}>Submit</Button> */}
             </Container>
 
             <Container className="content-container">
-                {(state.activeStep === 0) &&
+                {(state.activeStep === 0 && <AboutYou handleChange={this.handleChange} />)}
+                {(state.activeStep === 1) &&
                     <Education
                         handleChange={this.handleChange}
                         schools={this.state.schools}
                         addSchool={this.addSchool}
                     />}
-                {(state.activeStep === 1) && <Skills handleChange={this.handleChange} skillChanges={state.skillChanges} />}
-                {(state.activeStep === 2) && 
+                {(state.activeStep === 2) && <Skills handleChange={this.handleChange} skillChanges={state.skillChanges} />}
+                {(state.activeStep === 3) && 
               <Experience
               TechExp={this.state.TechExp}
               addTechExp={this.addTechExp}
               OtherExp={this.state.OtherExp}
               addOtherExp={this.addOtherExp}
             />}
-                {(state.activeStep === 3) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
-                {(state.activeStep === 4) &&
+                {(state.activeStep === 4) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
+                {(state.activeStep === 5) &&
                     <Extracurriculars
                         handleChange={this.handleChange}
                     />}
-                {(state.activeStep === 5) &&
+                {(state.activeStep === 6) &&
                     <Container>
                         <PDFViewer className="pdf-viewer">
                             <GeneratedResume

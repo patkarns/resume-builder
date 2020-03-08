@@ -38,13 +38,16 @@ class School extends React.Component {
     render() {
       return (
         <div className='school_info'>
-            <Grid container justify='space-evenly'>
-                <TextField
+        <Grid container direction='row' alignItems='stretch' spacing={3}>
+        <Grid item xs={12}>
+            <TextField
                 id='school_name'
                 label='School Name'
                 variant='outlined'
                 onChange={this.props.handleChange}
-                />
+            />
+        </Grid>
+        <Grid item>
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                     <DatePicker
                         disableToolbar
@@ -55,27 +58,32 @@ class School extends React.Component {
                         onChange={this.handleStartDateChange.bind(this)}
                         value={this.state.startDate}
                     />
-                    <DatePicker
-                        disableToolbar
-                        id='end_date'
-                        label='End Date'
-                        variant="inline"
-                        inputVariant="outlined"
-                        onChange={this.handleEndDateChange.bind(this)}
-                        value={this.state.endDate}
-                    />
                 </MuiPickersUtilsProvider>
-            </Grid>
-            <div className='awards_container'>
-                <TextField
-                    id="awards"
-                    label="Awards"
-                    multiline
-                    rows="2"
-                    onChange={this.handleAwardsChange.bind(this)}
-                    variant="outlined"
+        </Grid>
+        <Grid item>
+            <MuiPickersUtilsProvider utils={MomentUtils}>
+                <DatePicker
+                    disableToolbar
+                    id='end_date'
+                    label='End Date'
+                    variant="inline"
+                    inputVariant="outlined"
+                    onChange={this.handleEndDateChange.bind(this)}
+                    value={this.state.endDate}
                 />
-            </div>
+            </MuiPickersUtilsProvider>
+        </Grid>
+        <Grid item xs={12}>
+            <TextField
+                id="awards"
+                label="Awards"
+                multiline
+                rows="2"
+                onChange={this.handleAwardsChange.bind(this)}
+                variant="outlined"
+            />
+        </Grid>
+      </Grid>
         </div>
     );
 }
