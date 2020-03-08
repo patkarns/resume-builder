@@ -4,7 +4,7 @@ import React from 'react';
 // import Education from './Education.js';
 import Education from './Components/Education/Education.js';
 import Skills from './Components/Skills/Skills.js';
-import Experience from './Components/Experience/Education.js';
+// import Experience from './Components/Experience/Experience.js';
 import Projects from './Components/Projects/Projects.js';
 import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
 import School from './Components/School/School';
@@ -13,10 +13,6 @@ import { Stepper, Step, StepLabel, Button, Container } from '@material-ui/core';
 import { PDFViewer } from '@react-pdf/renderer';
 
 import './styles.css';
-
-import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
-import School from './Components/School/School.js';
-
 
 class Parent extends React.Component {
 
@@ -33,7 +29,7 @@ class Parent extends React.Component {
             steps: ['Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars', 'Generate!'],
             educationChanges: {},
             skillChanges: {},
-            schools: [<School key={1} handleChange={this.handleChange}/>],
+            schools: [<School key={1} handleChange={this.handleChange} />],
             projectChanges: [],
         }
     }
@@ -67,7 +63,7 @@ class Parent extends React.Component {
 
         } else if (step === 3) {
             console.log('parent handleChange', changes)
-            const projectChanges = [ ...changes ];
+            const projectChanges = [...changes];
             return await this.setState({ ...this.state, projectChanges });
         }
     }
@@ -78,7 +74,7 @@ class Parent extends React.Component {
                 ...this.state,
                 schools: [
                     ...this.state.schools,
-                    <School key={this.state.schools.length + 1} handleChange={this.handleChange}/>
+                    <School key={this.state.schools.length + 1} handleChange={this.handleChange} />
                 ]
             }
         );
@@ -87,7 +83,7 @@ class Parent extends React.Component {
     render() {
         const { state } = this;
         return <React.Fragment>
-            <Container>
+            <Container maxWidth="xl" fixed={true}>
                 <Stepper activeStep={state.activeStep} alternativeLabel>
                     {state.steps.map(label => (
                         <Step key={label}>
@@ -99,28 +95,32 @@ class Parent extends React.Component {
                 <Button disabled={state.activeStep > 4} onClick={this.handleNext}>Next</Button>
                 {/* <Button onClick={this.handleSubmit}>Submit</Button> */}
             </Container>
-            {(state.activeStep === 0) &&
-                <Education
-                    handleChange={this.handleChange}
-                    schools={this.state.schools}
-                    addSchool={this.addSchool}
-                />}
-            {(state.activeStep === 1) && <Skills handleChange={this.handleChange} />}
-            {(state.activeStep === 4) &&
-                <Extracurriculars
-                    handleChange={this.handleChange}
-                />}
-            {(state.activeStep === 5) &&
-                <Container>
-                    <PDFViewer className="pdf-viewer">
-                        <GeneratedResume
-                            educationChanges={state.educationChanges}
-                            skillChanges={state.skillChanges}
-                        />
-                    </PDFViewer>
-                </Container>
-            }
-            
+
+            <Container className="content-container">
+                {(state.activeStep === 0) &&
+                    <Education
+                        handleChange={this.handleChange}
+                        schools={this.state.schools}
+                        addSchool={this.addSchool}
+                    />}
+                {(state.activeStep === 1) && <Skills handleChange={this.handleChange} skillChanges={state.skillChanges} />}
+                {(state.activeStep === 3) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
+                {(state.activeStep === 4) &&
+                    <Extracurriculars
+                        handleChange={this.handleChange}
+                    />}
+                {(state.activeStep === 5) &&
+                    <Container>
+                        <PDFViewer className="pdf-viewer">
+                            <GeneratedResume
+                                educationChanges={state.educationChanges}
+                                skillChanges={state.skillChanges}
+                            />
+                        </PDFViewer>
+                    </Container>
+                }
+            </Container>
+
         </React.Fragment>
     }
 }
