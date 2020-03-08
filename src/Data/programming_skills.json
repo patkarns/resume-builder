@@ -1,0 +1,226 @@
+{
+    "Paradigm": [
+        "VBA",
+        "Java",
+        "Scala",
+        "Lua",
+        "Groovy",
+        "Go",
+        "Haskell",
+        "Julia",
+        "Ruby",
+        "Kotlin",
+        "PHP",
+        "Cobol",
+        "C#",
+        "Abap",
+        "Perl",
+        "TypeScript",
+        "Dart",
+        "Swift",
+        "Ada",
+        "Delphi",
+        "C",
+        "Objective-C",
+        "Python",
+        "Visual Basic",
+        "Javascript"
+    ],
+    "Multi-paradigm": [
+        "VBA",
+        "Java",
+        "Scala",
+        "Lua",
+        "R",
+        "Go",
+        "Julia",
+        "Ruby",
+        "Kotlin",
+        "Perl",
+        "TypeScript",
+        "Dart",
+        "Swift",
+        "Ada",
+        "Delphi",
+        "Python",
+        "Rust",
+        "C++"
+    ],
+    "frameworks": [
+        "Angular",
+        "Backbone",
+        "Express.js",
+        "React",
+        "Vue.js",
+        "jQuery",
+        "Dojo",
+        "React Native"
+    ],
+    "generic": [
+        "Java",
+        "C#",
+        "TypeScript",
+        "Rust",
+        "C++"
+    ],
+    "object-oriented": [
+        "Java",
+        "Scala",
+        "Lua",
+        "R",
+        "Go",
+        "Ruby",
+        "PHP",
+        "Cobol",
+        "C#",
+        "Perl",
+        "TypeScript",
+        "Dart",
+        "Swift",
+        "Objective-C",
+        "Python",
+        "C++"
+    ],
+    "class-based": [
+        "Java",
+        "Perl",
+        "Objective-C"
+    ],
+    "imperative": [
+        "Java",
+        "Scala",
+        "Lua",
+        "R",
+        "Groovy",
+        "Go",
+        "Ruby",
+        "Cobol",
+        "C#",
+        "Abap",
+        "Perl",
+        "TypeScript",
+        "Dart",
+        "Swift",
+        "Python",
+        "Rust",
+        "Javascript"
+    ],
+    "reflective": [
+        "Java",
+        "R",
+        "Ruby",
+        "PHP",
+        "C#",
+        "Perl",
+        "Dart",
+        "Python"
+    ],
+    "concurrent": [
+        "Scala",
+        "Go",
+        "C#",
+        "Rust"
+    ],
+    "functional": [
+        "Scala",
+        "Lua",
+        "R",
+        "Go",
+        "Julia",
+        "Ruby",
+        "PHP",
+        "C#",
+        "Perl",
+        "TypeScript",
+        "Dart",
+        "Swift",
+        "Python",
+        "Rust",
+        "Javascript",
+        "C++"
+    ],
+    "scripting": [
+        "Lua",
+        "Groovy"
+    ],
+    "procedural": [
+        "Lua",
+        "R",
+        "Julia",
+        "PHP",
+        "C",
+        "C++"
+    ],
+    "prototype-based": [
+        "Lua"
+    ],
+    "Paradigms": [
+        "R",
+        "Rust",
+        "C++"
+    ],
+    "Array": [
+        "R"
+    ],
+    "Object-oriented": [
+        "Groovy",
+        "Abap"
+    ],
+    "Functional": [
+        "Haskell"
+    ],
+    "multiple dispatch": [
+        "Julia"
+    ],
+    "meta": [
+        "Julia"
+    ],
+    "multistaged": [
+        "Julia"
+    ],
+    "Imperative": [
+        "PHP",
+        "C"
+    ],
+    "Procedural": [
+        "Cobol"
+    ],
+    "Structured": [
+        "C#"
+    ],
+    "event-driven": [
+        "C#",
+        "Javascript"
+    ],
+    "task-driven": [
+        "C#"
+    ],
+    "C": [
+        "C#",
+        "Objective-C",
+        "C++"
+    ],
+    "structured": [
+        "Abap",
+        "C",
+        "Rust"
+    ],
+    "protocol-oriented": [
+        "Swift"
+    ],
+    "block structured": [
+        "Swift"
+    ],
+    "Declarative programming": [
+        "Swift"
+    ],
+    "Reflective": [
+        "Objective-C"
+    ],
+    "Object-based": [
+        "Visual Basic"
+    ],
+    "Event-driven": [
+        "Visual Basic"
+    ]
+}
