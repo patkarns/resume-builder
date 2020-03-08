@@ -3,8 +3,10 @@ import React from 'react';
 
 // import Education from './Education.js';
 import Education from './Components/Education/Education.js';
+
 import Skills from './Components/Skills/Skills.js';
-// import Experience from './Components/Experience/Experience.js';
+import TechExp from './Components/TechExp/TechExp.js'
+import OtherExp from './Components/OtherExp/OtherExp.js'
 import Projects from './Components/Projects/Projects.js';
 import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
 import School from './Components/School/School';
@@ -23,7 +25,9 @@ class Parent extends React.Component {
         this.handleNext = this.handleNext.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.addSchool = this.addSchool.bind(this);
-
+        this.addTechExp = this.addTechExp.bind(this);
+        this.addOtherExp = this.addOtherExp.bind(this);
+                      
         this.state = {
             activeStep: 1,
             steps: ['Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars', 'Generate!'],
@@ -31,11 +35,14 @@ class Parent extends React.Component {
             skillChanges: {},
             schools: [<School key={1} handleChange={this.handleChange} />],
             projectChanges: [],
+            TechExp: [<TechExp key={1}/>],
+            OtherExp: [<OtherExp key={1}/>],
         }
     }
 
     async handlePrev() {
         const activeStep = this.state.activeStep - 1;
+
         await this.setState({ ...this.state, activeStep });
     }
 
@@ -68,7 +75,32 @@ class Parent extends React.Component {
         }
     }
 
-    addSchool() {
+
+    addTechExp() {
+            this.setState(
+                {
+                    ...this.state,
+                    TechExp: [
+                        ...this.state.TechExp,
+                        <TechExp key={this.state.TechExp.length + 1}/>
+                    ]
+                }
+            );
+        }
+
+      addOtherExp() {
+                this.setState(
+                    {
+                        ...this.state,
+                        OtherExp: [
+                            ...this.state.OtherExp,
+                            <OtherExp key={this.state.OtherExp.length + 1}/>
+                        ]
+                    }
+                );
+            }
+
+      addSchool() {
         this.setState(
             {
                 ...this.state,
@@ -83,7 +115,7 @@ class Parent extends React.Component {
     render() {
         const { state } = this;
         return <React.Fragment>
-            <Container maxWidth="xl" fixed={true}>
+            <Container>
                 <Stepper activeStep={state.activeStep} alternativeLabel>
                     {state.steps.map(label => (
                         <Step key={label}>
@@ -104,6 +136,13 @@ class Parent extends React.Component {
                         addSchool={this.addSchool}
                     />}
                 {(state.activeStep === 1) && <Skills handleChange={this.handleChange} skillChanges={state.skillChanges} />}
+                {(state.activeStep === 2) && 
+              <Experience
+              TechExp={this.state.TechExp}
+              addTechExp={this.addTechExp}
+              OtherExp={this.state.OtherExp}
+              addOtherExp={this.addOtherExp}
+            />}
                 {(state.activeStep === 3) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
                 {(state.activeStep === 4) &&
                     <Extracurriculars
@@ -120,7 +159,6 @@ class Parent extends React.Component {
                     </Container>
                 }
             </Container>
-
         </React.Fragment>
     }
 }
