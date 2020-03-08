@@ -144,7 +144,7 @@ class Projects extends React.Component {
     });
 
     return (<Container>
-      <h1> Projects</h1>
+      <h1 style = {{letterSpacing: 10 }}> ❦ PROJECTS </h1>
       <ProjectDescription
         currentDescription={state.currentIndexInEdit ? state.changes[state.currentIndexInEdit].description : undefined}
         handleUpdate={this.handleDescriptionUpdate}
