@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-// import Education from './Education.js';
+import AboutYou from './Components/AboutYou/AboutYou.js';
 import Education from './Components/Education/Education.js';
 import Skills from './Components/Skills/Skills.js';
 // import Experience from './Components/Experience/Education.js';
@@ -21,8 +21,8 @@ class Parent extends React.Component {
         this.addSchool = this.addSchool.bind(this);
 
         this.state = {
-            activeStep: 1,
-            steps: ['Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars'],
+            activeStep: 0,
+            steps: ['About You', 'Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars'],
             educationChanges: {},
             skillChanges: {},
             schools: [<School key={1} handleChange={this.handleChange}/>],
@@ -41,19 +41,19 @@ class Parent extends React.Component {
     }
 
     async handleChange(step, changes) {
-        if (step === 0) {
+        if (step === 1) {
             const educationChanges = { ...this.state.educationChanges };
             Object.keys(changes).map(changedAttribute => {
                 return educationChanges[changedAttribute] = changes[changedAttribute];
             });
             return await this.setState({ ...this.state, educationChanges });
-        } else if (step === 1) {
+        } else if (step === 2) {
             const skillChanges = { ...this.state.educationChanges };
             Object.keys(changes).map(changedAttribute => {
                 return skillChanges[changedAttribute] = changes[changedAttribute];
             });
             return await this.setState({ ...this.state, skillChanges });
-        } else if (step === 2) {
+        } else if (step === 3) {
             
         }
     }
@@ -81,18 +81,19 @@ class Parent extends React.Component {
                 ))}
             </Stepper>
             <Button disabled={state.activeStep < 1} onClick={this.handlePrev}>Prev</Button>
-            <Button disabled={state.activeStep > 3} onClick={this.handleNext}>Next</Button>
-            {(state.activeStep === 0) && 
+            <Button disabled={state.activeStep > 4} onClick={this.handleNext}>Next</Button>
+            {(state.activeStep === 0 && <AboutYou handleChange={this.handleChange} />)}
+            {(state.activeStep === 1) && 
                 <Education
                     handleChange={this.handleChange}
                     schools={this.state.schools}
                     addSchool={this.addSchool}
                 />}
-            {(state.activeStep === 1) && <Skills handleChange={this.handleChange}/>}
+            {(state.activeStep === 2) && <Skills handleChange={this.handleChange}/>}
             {/*(state.activeStep === 2) && <Experience />}
             {(state.activeStep === 3) && <Projects />}
             */}
-            {(state.activeStep === 4) &&
+            {(state.activeStep === 5) &&
                 <Extracurriculars
                     handleChange={this.handleChange}
                 />}
