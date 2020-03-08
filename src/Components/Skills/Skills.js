@@ -43,7 +43,6 @@ class Skills extends React.Component {
       selectedSkills: {},
       list: [],
     }
-    this.handleChange = this.handleChange.bind(this);
     this.onSelectedChange = this.onSelectedChange.bind(this);
     this.onDeleteChip = this.onDeleteChip.bind(this);
   }
@@ -66,10 +65,6 @@ class Skills extends React.Component {
     return await this.setState( {...this.state, list });
   }
 
-  async handleChange(e) {
-    console.log('change', e.target.value);
-  }
-
   async onDeleteChip(category, title) {
     const selectedSkills = { ...this.state.selectedSkills };
     delete selectedSkills[category][title];
@@ -85,7 +80,8 @@ class Skills extends React.Component {
       selectedSkills[category] = {};
     }
     selectedSkills[category][title] = values;
-    return await this.setState({ ...this.state, selectedSkills });
+    await this.setState({ ...this.state, selectedSkills });
+    return await this.props.handleChange(1, selectedSkills);
   }
 
   render() {
