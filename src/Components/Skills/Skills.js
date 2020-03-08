@@ -144,6 +144,7 @@ class Skills extends React.Component {
     }) : '';
 
     return (<Container>
+      <h4 style = {{paddingBottom: 30, fontStyle: 'italic', letterSpacing: 3, color: '#A187E8'}}>“Make the most of yourself by fanning the tiny, inner sparks of possibility into flames of achievement.” - Golda Meir</h4>
       <h1 style = {{letterSpacing: 10 }}> ❦ SKILLS</h1>
       <h3>What do you already know how to do?</h3>
       {/* <TextField label="Skills" valueDefault={props.attributes ? props.attributes : ''} onChange={this.handleChange} /> */}

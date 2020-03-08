@@ -144,7 +144,9 @@ class Projects extends React.Component {
     });
 
     return (<Container>
+      <h4 style = {{paddingBottom: 30, fontStyle: 'italic', letterSpacing: 3, color: '#A187E8', paddingBottom: 30}}>“We do not need magic to change the world, we carry all the power we need inside ourselves already: we have the power to imagine better.” ~ J.K. Rowling</h4>
       <h1 style = {{letterSpacing: 10 }}> ❦ PROJECTS </h1>
+      <h4 style = {{fontStyle: 'italic', color: '#A187E8'}}>Tips: Focus on the outcome, not only the process. Use the STAR technique: Situation, Task, Action, Response. Where possible, include statistics and numbers to emphasise achievements. </h4>
       <ProjectDescription
         currentDescription={state.currentIndexInEdit ? state.changes[state.currentIndexInEdit].description : undefined}
         handleUpdate={this.handleDescriptionUpdate}

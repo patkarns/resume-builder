@@ -13,8 +13,10 @@ class Experience extends React.Component {
     render() {
       return ( <Container>
         <div>
+        <h4 style = {{paddingBottom: 30, fontStyle: 'italic', letterSpacing: 3, color: '#A187E8'}}>“A surplus of effort could overcome a deficit of confidence.” - Sonia Sotomayor</h4>
         <h1 style = {{letterSpacing: 10 }}> ❦ EXPERIENCE </h1>
         <h3>Where did you previously work? What were your responsibilities, and what were your achievements? </h3>
+        <h4 style = {{fontStyle: 'italic', color: '#A187E8'}}>Tips: Ensure that you explain any uncommon acronyms, especially for those who may be from a different field. Start your sentences with action words to clearly communicate your achievements to the employer. </h4>
         <br/>
         <br/>
         </div>

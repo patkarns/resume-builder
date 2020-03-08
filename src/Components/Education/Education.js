@@ -9,6 +9,7 @@ import './styles.css';
 class Education extends React.Component {
     render() {
       return <Container>
+        <h4 style = {{paddingBottom: 30, fontStyle: 'italic', letterSpacing: 3, color: '#A187E8'}}>“A strong woman is a woman determined to do something others are determined not be done.” ~ Marge Piercy</h4>
           <h1 style = {{letterSpacing: 10 }}> ❦ EDUCATION </h1>
           <h3>Where did you go to school? Are there any noteworthy awards that you have earned?</h3>
           {this.props.schools}
