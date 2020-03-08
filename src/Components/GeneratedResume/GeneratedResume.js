@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 // // Create styles
 // const styles = StyleSheet.create({
 //   page: {
-//     flexDirection: 'row',
-//     backgroundColor: '#E4E4E4',
-//     width: '100%',
+    // flexDirection: 'row',
+    // backgroundColor: '#E4E4E4',
+    // width: '100%',
 //   },
 //   section: {
 //     margin: 10,
@@ -54,6 +54,54 @@ const styles = StyleSheet.create({
     padding: 0,
     backgroundColor: 'white',
   },
+  header: {
+    fontSize: 80,
+    fontWeight: 'extralight',
+    color: '#d2faf1',
+    textAlign: 'center',
+    padding: '30px',
+    backgroundColor: '#4e8da1',
+    letterSpacing: 9,
+  },
+  header2: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    padding: '8px',
+    backgroundColor: '#d2faf1',
+    letterSpacing: 5,
+  },
+  header3: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'left',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+  },
+  header35: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 3,
+    columnFill: 'balanced',
+    columnGap: 40,
+  },
+  header4: {
+    fontSize: 12,
+    color: 'black',
+    textAlign: 'left',
+    paddingTop: '1px',
+    paddingLeft: '50px',
+    paddingBottom: '8px',
+    columnCount: 3,
+  },
 });
 
 class GeneratedResume extends React.Component {
@@ -89,15 +137,31 @@ class GeneratedResume extends React.Component {
     return <Document>
       <Page size="LETTER" style={styles.page}>
       <View style={styles.view}>
-          <Text>Resume</Text>
-          {(Object.keys(state.skillChanges).length > 0) && <Text> HIIII</Text>}
+            <Text id='header' style={styles.header}>RESUME</Text>
+          <Text style={styles.header2}>EDUCATION</Text>
+          <Text style={styles.header3}>Insert some text here.</Text>
+          <Text style={styles.header4}>Insert some text here.</Text>
+          <Text style={styles.header2}>SKILLS</Text>
+          <Text style={styles.header35}>Skill 1            |           Skill 2           |            Skill 3</Text>
+          <Text style={styles.header2}>EXPERIENCE</Text>
+          <Text style={styles.header3}>Insert some text here.</Text>
+          <Text style={styles.header4}>Insert some text here.</Text>
+          <Text style={styles.header3}>Insert some text here.</Text>
+          <Text style={styles.header4}>Insert some text here.</Text>
+          <Text style={styles.header2}>PROJECTS</Text>
+          <Text style={styles.header3}>Insert some text here.</Text>
+          <Text style={styles.header4}>Insert some text here.</Text>
+          <Text style={styles.header3}>Insert some text here.</Text>
+          <Text style={styles.header4}>Insert some text here.</Text>
+          <Text style={styles.header2}>EXTRACURRICULARS</Text>
+          <Text style={styles.header3}>Insert some text here.</Text>
+          {(Object.keys(state.skillChanges).length > 0) && <Text></Text>}
         </View>
-
         {(Object.keys(state.educationChanges).length > 0) && <View style={styles.view}>
-          <Text>Section #1</Text>
+          <Text>Education</Text>
         </View>}
         {(Object.keys(state.skillChanges).length > 0) && <View style={styles.section}>
-          <Text>Section #2</Text>
+          <Text>Skills</Text>
         </View>}
       </Page>
     </Document>;
