@@ -4,8 +4,10 @@ import React from 'react';
 // import Education from './Education.js';
 import Education from './Components/Education/Education.js';
 import Skills from './Components/Skills/Skills.js';
-// import Experience from './Components/Experience/Education.js';
-// import Projects from './Components/Projects/Education.js';
+import Experience from './Components/Experience/Education.js';
+import Projects from './Components/Projects/Projects.js';
+import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
+import School from './Components/School/School';
 import GeneratedResume from './Components/GeneratedResume/GeneratedResume.js';
 import { Stepper, Step, StepLabel, Button, Container } from '@material-ui/core';
 import { PDFViewer } from '@react-pdf/renderer';
@@ -32,6 +34,7 @@ class Parent extends React.Component {
             educationChanges: {},
             skillChanges: {},
             schools: [<School key={1} handleChange={this.handleChange}/>],
+            projectChanges: [],
         }
     }
 
@@ -42,7 +45,6 @@ class Parent extends React.Component {
 
     async handleNext() {
         const activeStep = this.state.activeStep + 1;
-        console.log('activeStep', activeStep)
         await this.setState({ ...this.state, activeStep });
     }
 
@@ -55,7 +57,7 @@ class Parent extends React.Component {
             console.log('skillChanges')
             return await this.setState({ ...this.state, educationChanges });
         } else if (step === 1) {
-            const skillChanges = { ...this.state.educationChanges };
+            const skillChanges = { ...this.state.skillChanges };
             Object.keys(changes).map(changedAttribute => {
                 console.log('skillChanges')
                 skillChanges[changedAttribute] = changes[changedAttribute];
@@ -63,13 +65,11 @@ class Parent extends React.Component {
             return await this.setState({ ...this.state, skillChanges });
         } else if (step === 2) {
 
+        } else if (step === 3) {
+            console.log('parent handleChange', changes)
+            const projectChanges = [ ...changes ];
+            return await this.setState({ ...this.state, projectChanges });
         }
-
-        
-    }
-
-    async handleSubmit() {
-
     }
 
     addSchool() {
@@ -106,9 +106,10 @@ class Parent extends React.Component {
                     addSchool={this.addSchool}
                 />}
             {(state.activeStep === 1) && <Skills handleChange={this.handleChange} />}
-            {/*(state.activeStep === 2) && <Experience />}
-            {(state.activeStep === 3) && <Projects />}
-            {(state.activeStep === 4) && <Extracurriculars />} */}
+            {(state.activeStep === 4) &&
+                <Extracurriculars
+                    handleChange={this.handleChange}
+                />}
             {(state.activeStep === 5) &&
                 <Container>
                     <PDFViewer className="pdf-viewer">
@@ -119,11 +120,7 @@ class Parent extends React.Component {
                     </PDFViewer>
                 </Container>
             }
-            */}
-            {(state.activeStep === 4) &&
-                <Extracurriculars
-                    handleChange={this.handleChange}
-                />}
+            
         </React.Fragment>
     }
 }

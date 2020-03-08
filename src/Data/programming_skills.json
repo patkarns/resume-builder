@@ -46,6 +46,16 @@
         "Rust",
         "C++"
     ],
+    "frameworks": [
+        "Angular",
+        "Backbone",
+        "Express.js",
+        "React",
+        "Vue.js",
+        "jQuery",
+        "Dojo",
+        "React Native"
+    ],
     "generic": [
         "Java",
         "C#",
