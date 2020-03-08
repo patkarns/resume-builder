@@ -9,7 +9,7 @@ import './styles.css';
 class Education extends React.Component {
     render() {
       return <Container>
-          <h1> Your Education </h1>
+          <h1> Education </h1>
           {this.props.schools}
           <IconButton
             onClick={this.props.addSchool}
