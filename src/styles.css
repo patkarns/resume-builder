@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Anton');
-
 .pdf-viewer {
     width: 100% !important;
     height: 80vh;
+}
+body {
+    color: #EFEDD1
 }
