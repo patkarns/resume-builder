@@ -9,7 +9,8 @@ import './styles.css';
 class Education extends React.Component {
     render() {
       return <Container>
-          <h1> Education </h1>
+          <h1 style = {{letterSpacing: 10 }}> ❦ EDUCATION </h1>
+          <h3>Where did you go to school? Are there any noteworthy awards that you have earned?</h3>
           {this.props.schools}
           <IconButton
             onClick={this.props.addSchool}

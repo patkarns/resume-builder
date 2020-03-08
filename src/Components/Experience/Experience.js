@@ -1,6 +1,6 @@
 import React from 'react'
-import Proptypes from 'prop-types'
-import { Input, Container, Button } from '@material-ui/core';
+import { Container, IconButton } from '@material-ui/core';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 import './styles.css'
 
@@ -13,8 +13,8 @@ class Experience extends React.Component {
     render() {
       return ( <Container>
         <div>
-        <h1>Your previous experience</h1>
-        <p>Use this section to fill out any previous work experience and/or employment.</p>
+        <h1 style = {{letterSpacing: 10 }}> ❦ EXPERIENCE </h1>
+        <h3>Where did you previously work? What were your responsibilities, and what were your achievements? </h3>
         <br/>
         <br/>
         </div>
@@ -23,17 +23,17 @@ class Experience extends React.Component {
         {this.props.TechExp}
         <br/>
         <br/>
-        <Button variant="contained"
-          onClick={this.props.addTechExp}
-          >Add technical experience</Button>
+          <IconButton onClick={this.props.addTechExp}>
+              <AddCircleIcon />
+          </IconButton>
         </div>
         <br/>
         <div>
         <h2> Other experience </h2>
         {this.props.OtherExp}
-        <Button variant="contained"
-          onClick={this.props.addOtherExp}
-          >Add other experience</Button>
+          <IconButton onClick={this.props.addOtherExp}>
+                <AddCircleIcon />
+          </IconButton>
         </div>
         </Container>
       )

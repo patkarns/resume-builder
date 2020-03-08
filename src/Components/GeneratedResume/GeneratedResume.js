@@ -66,25 +66,35 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 80,
     fontWeight: 'extralight',
-    color: '#d2faf1',
+    color: '#E2D1E6',
     textAlign: 'center',
-    padding: '30px',
-    backgroundColor: '#4e8da1',
+    paddingTop: '30px',
+    backgroundColor: '#8676E4',
+    letterSpacing: 9,
+  },
+  header15: {
+    fontSize: 10,
+    fontWeight: 'extralight',
+    color: '#E2D1E6',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingBottom: '30px',
+    backgroundColor: '#8676E4',
     letterSpacing: 9,
   },
   header2: {
     fontSize: 25,
     fontWeight: 'bold',
-    color: '#406084',
+    color: '#A187E8',
     textAlign: 'center',
     padding: '8px',
-    backgroundColor: '#d2faf1',
+    backgroundColor: '#E2D1E6',
     letterSpacing: 5,
   },
   header3: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#406084',
+    color: '##7959D5',
     textAlign: 'left',
     paddingTop: '8px',
     paddingLeft: '35px',
@@ -311,6 +321,7 @@ class GeneratedResume extends React.Component {
       <Page size="LETTER" style={styles.page}>
       <View style={styles.view}>
             <Text id='header' style={styles.header}>RESUME</Text>
+            <Text style={styles.header15}>EMAIL | PHONE | LINKEDIN | WEBSITE</Text>
           <Text style={styles.header2}>EDUCATION</Text>
           <Text style={styles.header3}>Insert some text here.</Text>
           <Text style={styles.header4}>Insert some text here.</Text>
