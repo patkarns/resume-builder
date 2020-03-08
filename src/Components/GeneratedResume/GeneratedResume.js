@@ -93,6 +93,43 @@ const styles = StyleSheet.create({
     columnFill: 'balanced',
     columnGap: 40,
   },
+  header3Col: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 3,
+    columnFill: 'balanced',
+    columnGap: 40,
+  },
+  header4Col: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 4,
+    columnFill: 'balanced',
+    columnGap: 36,
+  },
+  header5Col: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 5,
+    columnFill: 'balanced',
+    columnGap: 30,
+  },
+
   header4: {
     fontSize: 12,
     color: 'black',
@@ -145,14 +182,19 @@ class GeneratedResume extends React.Component {
   render() {
     const { props, state } = this; 
     console.log('hi', (Object.keys(state.skillChanges).length > 0), props.educationChanges, props.skillChanges);
-    // const projects = state.projectChanges.map(projectChange => {
-    //   const date = '';
-
-    //   <React.Fragment>
-    //     <Text style={styles.header3}>{projectChange.name}</Text>
-    //     <Text style={styles.header3}>{projectChange.startMonth ? `${projectChange.startMonth}-${projectChange.startYear}` : projectChange.startYear}</Text>
-    //   </React.Fragment>
-    // })
+    const projects = state.projectChanges.map(projectChange => {
+      let date = '';
+      if (projectChange.startYear && projectChange.startMonth) {
+        date = `(${projectChange.startMonth} ${projectChange.startYear})`;
+      } else if (projectChange.startYear) {
+        date = `(${projectChange.startYear})`;
+      }
+      
+      return (<React.Fragment>
+        <Text style={styles.header3}>{date ? `${projectChange.name} ${date}`: projectChange.name}</Text>
+        <Text style={styles.header4}>{projectChange.description}</Text>
+      </React.Fragment>);
+    });
     return <Document>
       <Page size="LETTER" style={styles.page}>
       <View style={styles.view}>
@@ -169,10 +211,7 @@ class GeneratedResume extends React.Component {
           <Text style={styles.header3}>Insert some text here.</Text>
           <Text style={styles.header4}>Insert some text here.</Text>
           <Text style={styles.header2}>PROJECTS</Text>
-          <Text style={styles.header3}>Insert some text here.</Text>
-          <Text style={styles.header4}>Insert some text here.</Text>
-          <Text style={styles.header3}>Insert some text here.</Text>
-          <Text style={styles.header4}>Insert some text here.</Text>
+          {projects}
           <Text style={styles.header2}>EXTRACURRICULARS</Text>
           <Text style={styles.header3}>Insert some text here.</Text>
           {(Object.keys(state.skillChanges).length > 0) && <Text></Text>}
