@@ -57,7 +57,6 @@ class Parent extends React.Component {
             Object.keys(changes).map(changedAttribute => {
                 return educationChanges[changedAttribute] = changes[changedAttribute];
             });
-            console.log('skillChanges')
             return await this.setState({ ...this.state, educationChanges });
         } else if (step === 2) {
             const skillChanges = { ...this.state.skillChanges };
@@ -69,7 +68,6 @@ class Parent extends React.Component {
         } else if (step === 3) {
 
         } else if (step === 4) {
-            console.log('parent handleChange', changes)
             const projectChanges = [...changes];
             return await this.setState({ ...this.state, projectChanges });
         }

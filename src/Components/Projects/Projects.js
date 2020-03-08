@@ -43,7 +43,6 @@ class Projects extends React.Component {
   }
 
   async handleChange(e, index, attribute) {
-    console.log('e', e)
     const value = e.target.value;
     const { state } = this;
     const changes = [...state.changes];
@@ -51,7 +50,7 @@ class Projects extends React.Component {
     change[attribute] = value;
     changes[index] = change;
     await this.setState({ ...this.state, changes });
-    await this.props.handleChange(3, changes);
+    await this.props.handleChange(4, changes);
   }
 
   async handleDescriptionUpdate(isEdit, value) {
@@ -59,19 +58,14 @@ class Projects extends React.Component {
     if (isEdit) {
       changes[this.state.currentIndexInEdit].description = value;
     } else {
-      const nextIndex = changes.length;
-      changes[nextIndex] = {};
-      changes[nextIndex].description = value;
+      changes.push({ description: value });
     }
     await this.setState({ ...this.state, currentIndexInEdit: undefined, changes });
-    await this.props.handleChange(3, changes);
-    console.log('LINE 73', this.state.changes)
+    await this.props.handleChange(4, changes);
   }
 
   render() {
     const { props, state } = this;
-
-    console.log('changes', state.changes)
     const projectCards = props.projectChanges.map((change, index) => {
       const name = change.name;
       const description = change.description;

@@ -36,6 +36,15 @@ import PropTypes from 'prop-types';
 //   </Document>
 // );
 
+const categories = {
+  0: 'Programming',
+  1: 'Applications',
+  2: 'Tools',
+  3: 'CAD / Prototyping',
+  4: 'Design',
+  5: 'Other',
+}
+
 // Create styles
 const styles = StyleSheet.create({
   page: {
@@ -81,6 +90,63 @@ const styles = StyleSheet.create({
     paddingLeft: '35px',
     paddingBottom: '8px',
   },
+  header15Content: {
+    fontSize: 12,
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 1,
+    columnFill: 'balanced',
+    columnGap: 40,
+  },
+  header25Content: {
+    fontSize: 12,
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 2,
+    columnFill: 'balanced',
+    columnGap: 40,
+  },
+  header35Content: {
+    fontSize: 12,
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 3,
+    columnFill: 'balanced',
+    columnGap: 40,
+  },
+  header15: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 1,
+    columnFill: 'balanced',
+    columnGap: 40,
+  },
+  header25: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 2,
+    columnFill: 'balanced',
+    columnGap: 40,
+  },
   header35: {
     fontSize: 14,
     fontWeight: 'bold',
@@ -92,6 +158,30 @@ const styles = StyleSheet.create({
     columnCount: 3,
     columnFill: 'balanced',
     columnGap: 40,
+  },
+  header1Col: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 1,
+    columnFill: 'balanced',
+    columnGap: 40,
+  },
+  header2Col: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#406084',
+    textAlign: 'center',
+    paddingTop: '8px',
+    paddingLeft: '35px',
+    paddingBottom: '8px',
+    columnCount: 2,
+    columnFill: 'balanced',
+    columnGap: 50,
   },
   header3Col: {
     fontSize: 14,
@@ -180,8 +270,30 @@ class GeneratedResume extends React.Component {
   }
 
   render() {
-    const { props, state } = this; 
-    console.log('hi', (Object.keys(state.skillChanges).length > 0), props.educationChanges, props.skillChanges);
+    const { props, state } = this;
+    const skillChanges = { ...props.skillChanges };
+    const skillsCategories = Object.keys(skillChanges).map(categoryInt => {
+      return categories[categoryInt];
+    });
+
+    const skillsByCategory = {};
+    Object.keys(skillChanges).map(categoryInt => {
+      if (!skillsByCategory[categoryInt]) skillsByCategory[categoryInt] = [];
+      Object.keys(skillChanges[categoryInt]).map(skillKey => {
+        const title = skillChanges[categoryInt][skillKey].title;
+        skillsByCategory[categoryInt].push(title);
+      });
+    });
+
+    console.log('skills by category',  skillChanges, skillsByCategory, Object.keys(skillsByCategory));
+
+    let maxRows = 0;
+    Object.keys(skillsByCategory).map(categoryInt => {
+      const rowCount = skillsByCategory[categoryInt].length;
+      if (rowCount > maxRows) maxRows = rowCount;
+    });
+
+    
     const projects = state.projectChanges.map(projectChange => {
       let date = '';
       if (projectChange.startYear && projectChange.startMonth) {
@@ -203,13 +315,33 @@ class GeneratedResume extends React.Component {
           <Text style={styles.header3}>Insert some text here.</Text>
           <Text style={styles.header4}>Insert some text here.</Text>
           <Text style={styles.header2}>SKILLS</Text>
-          <Text style={styles.header35}>Skill 1            |           Skill 2           |            Skill 3</Text>
-          <Text style={styles.header3}>Insert some text here.</Text>
+          {(skillsCategories.length === 1) && <Text style={styles.header15}>{skillsCategories[0]}}</Text>}
+          {(skillsCategories.length === 2) && <Text style={styles.header25}>{skillsCategories[0]}            |           {skillsCategories[1]}</Text>}
+          {(skillsCategories.length === 3) && <Text style={styles.header35}>{skillsCategories[0]}            |           {skillsCategories[1]}           |            {skillsCategories[2]}</Text>}
+          
+          {(maxRows > 0) && (skillsCategories.length === 1) && <Text style={styles.header15Content}>{skillsByCategory[0][0]}</Text>}
+          {(maxRows > 0) && (skillsCategories.length === 2) && <Text style={styles.header25Content}>{skillsByCategory[0][0]}            |           {skillsCategories[1][0]}</Text>}
+          {(maxRows > 0) && (skillsCategories.length === 3) && <Text style={styles.header35Content}>{skillsByCategory[0][0]}            |           {skillsCategories[1][0]}            |           {skillsCategories[2][0]}</Text>}
+          
+          {(maxRows > 1) && (skillsCategories.length === 1) && <Text style={styles.header15Content}>{skillsByCategory[0][1]}}</Text>}
+          {(maxRows > 1) && (skillsCategories.length === 2) && <Text style={styles.header25Content}>{skillsByCategory[0][1]}            |           {skillsCategories[1][1]}</Text>}
+          {(maxRows > 1) && (skillsCategories.length === 3) && <Text style={styles.header35Content}>{skillsByCategory[0][1]}            |           {skillsCategories[1][1]}            |           {skillsCategories[2][1]}</Text>}
+
+          {(maxRows > 2) && (skillsCategories.length === 1) && <Text style={styles.header15Content}>{skillsByCategory[0][2]}</Text>}
+          {(maxRows > 2) && (skillsCategories.length === 2) && <Text style={styles.header25Content}>{skillsByCategory[0][2]}           |           {skillsCategories[1][2]}}</Text>}
+          {(maxRows > 2) && (skillsCategories.length === 3) && <Text style={styles.header35Content}>{skillsByCategory[0][2]}           |           {skillsCategories[1][2]}           |           {skillsCategories[2][2]}}</Text>}
+
+          {(maxRows > 3) && (skillsCategories.length === 1) && <Text style={styles.header15Content}>{skillsByCategory[0][3]}</Text>}
+          {(maxRows > 3) && (skillsCategories.length === 2) && <Text style={styles.header25Content}>{skillsByCategory[0][3]}           |           {skillsCategories[1][3]}</Text>}
+          {(maxRows > 3) && (skillsCategories.length === 3) && <Text style={styles.header35Content}>{skillsByCategory[0][3]}           |           {skillsCategories[1][3]}           |           {skillsCategories[2][3]}</Text>}
+
+
           <Text style={styles.header2}>EXPERIENCE</Text>
           <Text style={styles.header3}>Insert some text here.</Text>
           <Text style={styles.header4}>Insert some text here.</Text>
           <Text style={styles.header3}>Insert some text here.</Text>
           <Text style={styles.header4}>Insert some text here.</Text>
+          {/* {state.projectChanges.length && <Text style={styles.header2}>PROJECTS</Text>} */}
           <Text style={styles.header2}>PROJECTS</Text>
           {projects}
           <Text style={styles.header2}>EXTRACURRICULARS</Text>

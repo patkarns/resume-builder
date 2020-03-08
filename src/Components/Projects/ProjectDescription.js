@@ -40,6 +40,7 @@ class ProjectDescription extends React.Component {
 
   async handleUpdate() {
     const { state, props } = this;
+    console.log('LINE 43', state.currentDescriptionInEdit)
     await props.handleUpdate(props.isEdit, state.currentDescriptionInEdit);
     return await this.setState({ ...state, currentDescriptionInEdit: undefined,  syntaxAnalysisResults: undefined }); 
   }

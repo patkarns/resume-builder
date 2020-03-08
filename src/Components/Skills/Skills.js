@@ -114,7 +114,7 @@ class Skills extends React.Component {
     }
     selectedSkills[category][title] = values;
     await this.setState({ ...this.state, selectedSkills });
-    return await this.props.handleChange(1, selectedSkills);
+    return await this.props.handleChange(2, selectedSkills);
   }
 
   render() {
