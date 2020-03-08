@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+import Landing from './Components/Landing/Landing.js';
 import AboutYou from './Components/AboutYou/AboutYou.js';
 import Education from './Components/Education/Education.js';
 import Experience from './Components/Experience/Experience.js';
@@ -122,7 +123,8 @@ class Parent extends React.Component {
     render() {
         const { state } = this;
         return <React.Fragment>
-            <Container>
+            {state.activeStep === 0 && <Landing onClick={this.handleNext}/>}
+            {state.activeStep > 0 && <Container>
                 <Stepper activeStep={state.activeStep} alternativeLabel>
                     {state.steps.map(label => (
                         <Step key={label}>
@@ -130,33 +132,33 @@ class Parent extends React.Component {
                         </Step>
                     ))}
                 </Stepper>
-                <Button style={{buttonAlign: 'center', color: '#7959D5', fontSize: 20, letterSpacing: 5, paddingLeft: 50, paddingRight: 50}} disabled={state.activeStep < 1} onClick={this.handlePrev}>Prev</Button>
+                <Button style={{buttonAlign: 'center', color: '#7959D5', fontSize: 20, letterSpacing: 5, paddingLeft: 50, paddingRight: 50}} disabled={state.activeStep < 2} onClick={this.handlePrev}>Prev</Button>
                 <Button style={{buttonAlign: 'center', color: '#7959D5', fontSize: 20, letterSpacing: 5, paddingLeft: 50, paddingRight: 50}} disabled={state.activeStep > 5} onClick={this.handleNext}>Next</Button>
                 {/* <Button onClick={this.handleSubmit}>Submit</Button> */}
-            </Container>
+            </Container>}
 
             <Container className="content-container">
-                {(state.activeStep === 0 && <AboutYou handleChange={this.handleChange} />)}
-                {(state.activeStep === 1) &&
+                {(state.activeStep === 1 && <AboutYou handleChange={this.handleChange} />)}
+                {(state.activeStep === 2) &&
                     <Education
                         handleChange={this.handleChange}
                         schools={this.state.schools}
                         addSchool={this.addSchool}
                     />}
-                {(state.activeStep === 2) && <Skills handleChange={this.handleChange} skillChanges={state.skillChanges} />}
-                {(state.activeStep === 3) && 
+                {(state.activeStep === 3) && <Skills handleChange={this.handleChange} skillChanges={state.skillChanges} />}
+                {(state.activeStep === 4) && 
               <Experience
               TechExp={this.state.TechExp}
               addTechExp={this.addTechExp}
               OtherExp={this.state.OtherExp}
               addOtherExp={this.addOtherExp}
             />}
-                {(state.activeStep === 4) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
-                {(state.activeStep === 5) &&
+                {(state.activeStep === 5) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
+                {(state.activeStep === 6) &&
                     <Extracurriculars
                         handleChange={this.handleChange}
                     />}
-                {(state.activeStep === 6) &&
+                {(state.activeStep === 7) &&
                     <Container>
                         <PDFViewer className="pdf-viewer">
                             <GeneratedResume
