@@ -1,0 +1,150 @@
+{
+    "level_design": [
+        "Quake Army Knife"
+    ],
+    "raster_graphics_editor": [
+        "Adobe Dimension",
+        "Exa Corporation"
+    ],
+    "CAD": [
+        "BricsCAD",
+        "SolidWorks",
+        "SpaceClaim",
+        "Pro/ENGINEER",
+        "RFEM",
+        "BRL-CAD",
+        "Autodesk Revit",
+        "OpenSCAD",
+        "Open CASCADE",
+        "Sweet Home 3D",
+        "FreeCAD",
+        "CATIA",
+        "Tekla Structures",
+        "ArchiCAD",
+        "IRONCAD"
+    ],
+    "3D_computer_graphics": [
+        "Blender",
+        "Poser",
+        "Art of Illusion",
+        "Houdini",
+        "Autodesk Mudbox",
+        "LightWave 3D",
+        "TrueSpace",
+        "AutoQ3D Community",
+        "Animation:Master",
+        "AC3D",
+        "DAZ Studio",
+        "Rhinoceros 3D",
+        "Wings 3D",
+        "Zmodeler",
+        "Sketchup",
+        "Autodesk Softimage",
+        "Electric Image Animation System",
+        "Form-Z",
+        "Cheetah3D",
+        "Autodesk Maya",
+        "Oculus Medium",
+        "ZBrush",
+        "Sculptris",
+        "Remo 3D",
+        "Autodesk 3ds Max",
+        "Amapi",
+        "AutoQ3D",
+        "solidThinking",
+        "Makers Empire 3D",
+        "Anim8or",
+        "3D-Coat",
+        "Cinema 4D",
+        "Autodesk Inventor",
+        "AutoCAD",
+        "KeyCreator",
+        "Promine"
+    ],
+    "CAE": [
+        "Pro/ENGINEER",
+        "RFEM",
+        "Open CASCADE",
+        "Sweet Home 3D",
+        "CATIA"
+    ],
+    "CAM": [
+        "Pro/ENGINEER",
+        "Open CASCADE",
+        "CATIA"
+    ],
+    "PLM": [
+        "Pro/ENGINEER",
+        "CATIA"
+    ],
+    "FEM": [
+        "RFEM",
+        "FreeCAD"
+    ],
+    "3D Software": [
+        "Realsoft 3D"
+    ],
+    "Building Information Modeling": [
+        "Autodesk_Revit",
+        "Tekla_Structures",
+        "ArchiCAD"
+    ],
+    "computer_graphics": [
+        "CityEngine",
+        "PowerAnimator"
+    ],
+    "geodesign": [
+        "CityEngine"
+    ],
+    "Procedural generation": [
+        "CityEngine"
+    ],
+    "Computer algebra": [
+        "Wolfram Mathematica"
+    ],
+    "numerical_computations": [
+        "Wolfram Mathematica"
+    ],
+    "information_visualization": [
+        "Wolfram Mathematica"
+    ],
+    "statistics": [
+        "Wolfram Mathematica"
+    ],
+    "user_interface_creation": [
+        "Wolfram Mathematica"
+    ],
+    "CAD software": [
+        "Solid Edge"
+    ],
+    "3D animation": [
+        "MikuMikuDance"
+    ],
+    "3D modeling software": [
+        "Seamless3d"
+    ],
+    "CAAD": [
+        "Sweet Home 3D"
+    ],
+    "3D Modeling": [
+        "FreeCAD"
+    ],
+    "BIM": [
+        "FreeCAD"
+    ],
+    "Mining Engineering": [
+        "Promine"
+    ],
+    "Adobe Flash": [
+        "Swift 3D"
+    ],
+    "3D modeling": [
+        "Strata 3D"
+    ],
+    "animation": [
+        "Strata 3D"
+    ],
+    "MCAD": [
+        "DesignSpark Mechanical"
+    ]
+}
