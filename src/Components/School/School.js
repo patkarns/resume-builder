@@ -11,28 +11,72 @@ class School extends React.Component {
         startDate: new Date(),
         endDate: new Date(),
         awards: '',
+        name: '',
     }
 
-    handleStartDateChange(startDate) {
+    async handleStartDateChange(startDate) {
         if (startDate > this.state.endDate) {
             // make it so that start date cannot be after the end date
-            this.setState({ ...this.state, endDate: startDate, startDate });
+            await this.setState({ ...this.state, endDate: startDate, startDate });
+
         } else {
-            this.setState({ ...this.state, startDate });
+            await this.setState({ ...this.state, startDate });
         }
+
+        const id = this.props.id.toString();
+        const schoolChange = {
+            id,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            awards: this.state.awards,
+            name: this.state.name,
+        };
+        await this.props.handleChange(1, schoolChange);
     }
 
-    handleEndDateChange(endDate) {
+    async handleEndDateChange(endDate) {
         if (endDate < this.state.startDate) {
             // make it so that end date cannot be before the start date
-            this.setState({ ...this.state, startDate: endDate, endDate});
+            await this.setState({ ...this.state, startDate: endDate, endDate});
         } else {
-            this.setState({ ...this.state, endDate });
+            await this.setState({ ...this.state, endDate });
         }
+        const id = this.props.id.toString();
+        const schoolChange = {
+            id,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            awards: this.state.awards,
+            name: this.state.name,
+        };
+        await this.props.handleChange(1, schoolChange);
     }
 
-    handleAwardsChange(awards) {
-        this.setState({ ...this.state, awards });
+    async handleAwardsChange(awards) {
+        await this.setState({ ...this.state, awards });
+        const id = this.props.id.toString();
+        const schoolChange = {
+            id,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            awards: this.state.awards,
+            name: this.state.name,
+        };
+        await this.props.handleChange(1, schoolChange);
+    }
+
+    async handleNameChange(e) {
+        const name = e.target.value;
+        await this.setState({ ...this.state, name });
+        const id = this.props.id.toString();
+        const schoolChange = {
+            id,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            awards: this.state.awards,
+            name: this.state.name,
+        };
+        await this.props.handleChange(1, schoolChange);
     }
 
     render() {
@@ -44,7 +88,7 @@ class School extends React.Component {
                 id='school_name'
                 label='School Name'
                 variant='outlined'
-                onChange={this.props.handleChange}
+                onChange={this.handleNameChange.bind(this)}
             />
         </Grid>
         <Grid item>
@@ -91,6 +135,7 @@ class School extends React.Component {
 
   School.propTypes = {
     handleChange: PropTypes.func.isRequired,
+    id: PropTypes.any.isRequired,
   };
 
 export default School;

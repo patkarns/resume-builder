@@ -33,7 +33,8 @@ class Parent extends React.Component {
             steps: ['About You', 'Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars', 'Generate!'],
             educationChanges: {},
             skillChanges: {},
-            schools: [<School key={1} handleChange={this.handleChange} />],
+            generalChanges: {},
+            schools: [<School key={1} id={1} handleChange={this.handleChange} />],
             projectChanges: [],
             TechExp: [<TechExp key={1}/>],
             OtherExp: [<OtherExp key={1}/>],
@@ -52,11 +53,19 @@ class Parent extends React.Component {
     }
 
     async handleChange(step, changes) {
-        if (step === 1) {
-            const educationChanges = { ...this.state.educationChanges };
-            Object.keys(changes).map(changedAttribute => {
-                return educationChanges[changedAttribute] = changes[changedAttribute];
+        if (step === 0) {
+            const generalChanges = { ...this.state.generalChanges };
+            Object.keys(changes).map(key => {
+                generalChanges[key] = changes[key];
             });
+            return await this.setState({ ...this.state, generalChanges });
+        } else if (step === 1) {
+            const educationChanges = { ...this.state.educationChanges };
+            const key = changes.id;
+            educationChanges[key] = changes;
+            // Object.keys(changes).map(changedAttribute => {
+            //     return educationChanges[changedAttribute] = changes[changedAttribute];
+            // });
             return await this.setState({ ...this.state, educationChanges });
         } else if (step === 2) {
             const skillChanges = { ...this.state.skillChanges };
@@ -104,7 +113,7 @@ class Parent extends React.Component {
                 ...this.state,
                 schools: [
                     ...this.state.schools,
-                    <School key={this.state.schools.length + 1} handleChange={this.handleChange} />
+                    <School key={this.state.schools.length + 1} handleChange={this.handleChange} id={this.state.schools.length + 1} />
                 ]
             }
         );
@@ -151,6 +160,7 @@ class Parent extends React.Component {
                     <Container>
                         <PDFViewer className="pdf-viewer">
                             <GeneratedResume
+                                generalChanges={state.generalChanges}
                                 educationChanges={state.educationChanges}
                                 skillChanges={state.skillChanges}
                                 projectChanges={state.projectChanges}

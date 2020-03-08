@@ -17,7 +17,7 @@ class AboutYou extends React.Component {
                     id='name'
                     label='Name'
                     variant='outlined'
-                    onChange={this.props.handleChange}
+                    onChange={(e) => this.props.handleChange(0, { name: e.target.value })}
                 />
             </Grid>
             <Grid item>
@@ -25,7 +25,7 @@ class AboutYou extends React.Component {
                     id='email'
                     label='Email'
                     variant='outlined'
-                    onChange={this.props.handleChange}
+                    onChange={(e) => this.props.handleChange(0, { email: e.target.value })}
                 />
             </Grid>
             <Grid item>
@@ -33,7 +33,7 @@ class AboutYou extends React.Component {
                     id='phone'
                     label='Phone'
                     variant='outlined'
-                    onChange={this.props.handleChange}
+                    onChange={(e) => this.props.handleChange(0, { phone: e.target.value })}
                 />
             </Grid>
             <Grid item>
@@ -41,7 +41,7 @@ class AboutYou extends React.Component {
                     id='github'
                     label='Github'
                     variant='outlined'
-                    onChange={this.props.handleChange}
+                    onChange={(e) => this.props.handleChange(0, { github: e.target.value })}
                 />
             </Grid>
             <Grid item>
@@ -49,7 +49,7 @@ class AboutYou extends React.Component {
                     id='linkedin'
                     label='LinkedIn Profile'
                     variant='outlined'
-                    onChange={this.props.handleChange}
+                    onChange={(e) => this.props.handleChange(0, { linkedin: e.target.value })}
                 />
             </Grid>
             <Grid item>
@@ -57,7 +57,7 @@ class AboutYou extends React.Component {
                     id='personal_website'
                     label='Personal Website'
                     variant='outlined'
-                    onChange={this.props.handleChange}
+                    onChange={(e) => this.props.handleChange(0, { website: e.target.value })}
                 />
             </Grid>
         </Grid>
