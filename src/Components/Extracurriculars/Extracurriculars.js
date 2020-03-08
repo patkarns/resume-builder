@@ -27,8 +27,8 @@ class Extracurriculars extends React.Component {
             label={'Activity Type'}
             options={this.state.activityCategories}
             onOptionSelect={this.addActivityCard.bind(this)}
-          />
-          <Grid container spacing={1}>
+          /><br/>
+          <Grid container spacing={2} alignItems="center" justify="space-around">
             {this.state.activityCards}
           </Grid>
     </Container>
@@ -41,11 +41,12 @@ class Extracurriculars extends React.Component {
                 this.state.activityCategories : [...this.state.activityCategories, category],
             activityCards: [
                 ...this.state.activityCards,
-                <ActivityCategory
-                    key={category}
-                    title={category}
-                    handleChange={this.props.handleChange}
-                />
+                <Grid item xs={12} key={category}>
+                    <ActivityCategory
+                        title={category}
+                        handleChange={this.props.handleChange}
+                    />
+                </Grid>
             ],
         });
     }

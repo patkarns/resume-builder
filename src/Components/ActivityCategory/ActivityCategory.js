@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Selector from '../Selector/Selector.js';
 import { Card, CardContent, CardHeader, Container, Chip, Grid } from '@material-ui/core';
+
 class ActivityCategory extends React.Component {
     state = {
         activities: [],
@@ -19,7 +20,7 @@ class ActivityCategory extends React.Component {
                         onOptionSelect={this.addActivity.bind(this)}
                     />
               </CardContent>
-              <Grid container spacing={1}>
+              <Grid container spacing={1} justify="flex-start">
                     {this.state.activities}
                </Grid>
           </Card>
@@ -27,7 +28,7 @@ class ActivityCategory extends React.Component {
     }
 
     addActivity(activity) {
-        const activityChip = <Chip key={activity} label={activity} onDelete={() => this.onDeleteChip(0, activity)}/>;
+        const activityChip = <Grid item key={activity}><Chip label={activity} onDelete={() => this.onDeleteChip(0, activity)}/></Grid>;
         this.setState({activities: [...this.state.activities, activityChip ]});
     }
 
