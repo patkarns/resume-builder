@@ -6,3 +6,9 @@
 body {
     color: #EFEDD1
 }
+
+.content-container {
+    /* background-color: #FFFFFF; */
+    margin: 2em;
+    height: 70vh;
+}
