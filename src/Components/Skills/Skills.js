@@ -57,47 +57,45 @@ class Skills extends React.Component {
   async loadList() {
     let list = [];
     const objectOriented = 'object-oriented';
-    for(const title of programming_skills[objectOriented]) {
-      if (list.findIndex((item) => item.title === title) < 0) {
-        list.push({ title, category: 0 });
-      }
-    }
-    for(const title of programming_skills.functional) {
-      if (list.findIndex((item) => item.title === title) < 0) {
-        list.push({ title, category: 0 });
-      }
-    }
-    for(const title of programming_skills.procedural) {
-      if (list.findIndex((item) => item.title === title) < 0) {
-        list.push({ title, category: 0 });
-      }
-    }
-    for(const title of programming_skills.frameworks) {
-      if (list.findIndex((item) => item.title === title) < 0) {
-        list.push({ title, category: 0 });
-      }
-    }
-    for(const title of applications_skills.applications) {
-      if (list.findIndex((item) => item.title === title) >= 0) {
-        list.push({ title, category: 1 });
-      }
-    }
-    for (const title of tools_skills.tools) {
-      if (list.findIndex((item) => item.title === title) >= 0) {
-        list.push({ title, category: 2 });
-      }
-    }
-    for (const title of CAD_design_skills.CAD) {
-      if (list.findIndex((item) => item.title === title) >= 0) {
-        list.push({ title, category: 3 });
-      }
-    }
+    const objectOrientedLanguages = programming_skills[objectOriented].map(title => {
+      return { title, category: 0 };
+    });
+    list = list.concat(objectOrientedLanguages);
+    const functionalLanguages = programming_skills.functional.map(title => {
+      return { title, category: 0 };
+    });
+    list = list.concat(functionalLanguages);
+    const procedural = programming_skills.procedural.map(title => {
+      return { title, category: 0 };
+    });
+    list = list.concat(procedural);
+    const frameworks = programming_skills.frameworks.map(title => {
+      return { title, category: 0 };
+    });
+    list = list.concat(frameworks);
+
+
+    const applications = applications_skills.applications.map(title => {
+      return { title, category: 1 };
+    });
+    list = list.concat(applications);
+
+    const tools = tools_skills.tools.map(title => {
+      return { title, category: 2 };
+    });
+    list = list.concat(tools);
+
+    const CAD = CAD_design_skills.CAD.map(title => {
+      return { title, category: 3 };
+    });
+    list = list.concat(CAD);
+    
     const _3D_computer_graphics_key = '3D_computer_graphics';
-    for (const title of CAD_design_skills[_3D_computer_graphics_key]) {
-      if (list.findIndex((item) => item.title === title) >= 0) {
-        list.push({ title, category: 3 });
-      }
-    }
+    const _3D_computer_graphics = CAD_design_skills[_3D_computer_graphics_key].map(title => {
+      return { title, category: 3 };
+    });
+    list = list.concat(_3D_computer_graphics);
+
 
     return await this.setState( {...this.state, list });
   }

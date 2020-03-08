@@ -394,7 +394,7 @@ class GeneratedResume extends React.Component {
           <Text style={styles.header2}>EDUCATION</Text>
           {schools}
           <Text style={styles.header2}>SKILLS</Text>
-          {(skillsCategories.length === 1) && <Text style={styles.header15}>{skillsCategories[0]}}</Text>}
+          {(skillsCategories.length === 1) && <Text style={styles.header15}>{skillsCategories[0]}</Text>}
           {(skillsCategories.length === 2) && <Text style={styles.header25}>{skillsCategories[0]}            |           {skillsCategories[1]}</Text>}
           {(skillsCategories.length === 3) && <Text style={styles.header35}>{skillsCategories[0]}            |           {skillsCategories[1]}           |            {skillsCategories[2]}</Text>}
           
