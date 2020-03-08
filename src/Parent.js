@@ -6,9 +6,18 @@ import Education from './Components/Education/Education.js';
 import Skills from './Components/Skills/Skills.js';
 // import Experience from './Components/Experience/Education.js';
 // import Projects from './Components/Projects/Education.js';
-// import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
+import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
 import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 import School from './Components/School/School.js';
+import ActivityCategory from './Components/ActivityCategory/ActivityCategory.js';
+
+const categories = [
+    'Academic',
+    'Athletics',
+    'Arts',
+    'Volunteering',
+    'Community Involvement',
+];
 
 class Parent extends React.Component {
 
@@ -19,6 +28,7 @@ class Parent extends React.Component {
         this.handleNext = this.handleNext.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.addSchool = this.addSchool.bind(this);
+        this.addActivityCard = this.addActivityCard.bind(this);
 
         this.state = {
             activeStep: 1,
@@ -26,6 +36,8 @@ class Parent extends React.Component {
             educationChanges: {},
             skillChanges: {},
             schools: [<School key={1} handleChange={this.handleChange}/>],
+            activityCategories: [...categories],
+            activityCards: [],
         }
     }
 
@@ -44,13 +56,13 @@ class Parent extends React.Component {
         if (step === 0) {
             const educationChanges = { ...this.state.educationChanges };
             Object.keys(changes).map(changedAttribute => {
-                educationChanges[changedAttribute] = changes[changedAttribute];
+                return educationChanges[changedAttribute] = changes[changedAttribute];
             });
             return await this.setState({ ...this.state, educationChanges });
         } else if (step === 1) {
             const skillChanges = { ...this.state.educationChanges };
             Object.keys(changes).map(changedAttribute => {
-                skillChanges[changedAttribute] = changes[changedAttribute];
+                return skillChanges[changedAttribute] = changes[changedAttribute];
             });
             return await this.setState({ ...this.state, skillChanges });
         } else if (step === 2) {
@@ -68,6 +80,23 @@ class Parent extends React.Component {
                 ]
             }
         );
+    }
+
+    addActivityCard(category) {
+        console.log(`category in add parent ${category}`);
+        this.setState({
+            ...this.state,
+            activityCategories: this.state.activityCategories.indexOf(category) >= 0 ?
+                this.state.activityCategories : [...this.state.activityCategories, category],
+            activityCards: [
+                ...this.state.activityCards,
+                <ActivityCategory
+                    key={category}
+                    title={category}
+                    handleChange={this.handleChange}
+                />
+            ],
+        });
     }
 
     render() {
@@ -91,7 +120,14 @@ class Parent extends React.Component {
             {(state.activeStep === 1) && <Skills handleChange={this.handleChange}/>}
             {/*(state.activeStep === 2) && <Experience />}
             {(state.activeStep === 3) && <Projects />}
-            {(state.activeStep === 4) && <Extracurriculars />} */}
+            */}
+            {(state.activeStep === 4) &&
+                <Extracurriculars
+                    handleChange={this.handleChange}
+                    activityCategories={this.state.activityCategories}
+                    activityCards={this.state.activityCards}
+                    addActivityCard={this.addActivityCard}
+                />}
         </React.Fragment>
     }
 }
