@@ -8,6 +8,7 @@ import Skills from './Components/Skills/Skills.js';
 import TechExp from './Components/TechExp/TechExp.js'
 import OtherExp from './Components/OtherExp/OtherExp.js'
 import Projects from './Components/Projects/Projects.js';
+import Experience from './Components/Experience/Experience.js';
 import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
 import School from './Components/School/School';
 import GeneratedResume from './Components/GeneratedResume/GeneratedResume.js';

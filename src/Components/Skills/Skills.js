@@ -144,13 +144,14 @@ class Skills extends React.Component {
     }) : '';
 
     return (<Container>
-      <h1> Skills</h1>
+      <h1 style = {{letterSpacing: 10 }}> ❦ SKILLS</h1>
+      <h3>What do you already know how to do?</h3>
       {/* <TextField label="Skills" valueDefault={props.attributes ? props.attributes : ''} onChange={this.handleChange} /> */}
       <Autocomplete
         id="combo-box-demo"
         options={state.list}
         getOptionLabel={option => option.title}
-        style={{ width: 300 }}
+        style={{ width: 300, color: '#7959D5'}}
         onChange={this.onSelectedChange}
         renderInput={params => <TextField {...params} label="Skills" variant="outlined" />}
       />
@@ -171,25 +172,25 @@ class Skills extends React.Component {
         <Grid container spacing={1} xs={12}>
           {programmingChips && <Grid item>
             <Card>
-              <CardHeader title='Programming' />
+              <CardHeader style={{ color: '#7959D5'}} title='Programming' />
               <CardContent> {programmingChips}</CardContent>
             </Card>
           </Grid>}
           {applicationsChips && <Grid item>
             <Card>
-              <CardHeader title='Applications' />
+              <CardHeader style={{ color: '#7959D5'}} title='Applications' />
               <CardContent> {applicationsChips}</CardContent>
             </Card>
           </Grid>}
           {toolsChips && <Grid item>
             <Card>
-              <CardHeader title='Tools' />
+              <CardHeader style={{ color: '#7959D5'}} title='Tools' />
               <CardContent> {toolsChips}</CardContent>
             </Card>
           </Grid>}
           {CADChips && <Grid item>
             <Card>
-              <CardHeader title='CAD/ Protopying' />
+              <CardHeader style={{ color: '#7959D5'}} title='CAD/ Protopying' />
               <CardContent> {CADChips}</CardContent>
             </Card>
           </Grid>}

@@ -21,7 +21,7 @@ class Extracurriculars extends React.Component {
 
     render() {
       return <Container>
-          <h1> Extracurriculars </h1>
+          <h1 style = {{letterSpacing: 10 }}> ❦ EXTRACURRICULARS </h1>
           <Selector
             handleChange={this.props.handleChange}
             label={'Activity Type'}

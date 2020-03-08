@@ -13,8 +13,8 @@ class Experience extends React.Component {
     render() {
       return ( <Container>
         <div>
-        <h1>Your previous experience</h1>
-        <p>Use this section to fill out any previous work experience and/or employment.</p>
+        <h1 style = {{letterSpacing: 10 }}> ❦ EXPERIENCE </h1>
+        <h3>Where did you previously work? What were your responsibilities, and what were your achievements? </h3>
         <br/>
         <br/>
         </div>
