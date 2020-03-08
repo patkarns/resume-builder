@@ -9,7 +9,8 @@ class AboutYou extends React.Component {
     render() {
       return (
         <Container>
-            <h1> About You </h1>
+            <h1 style = {{letterSpacing: 10}}> ❦ ABOUT YOU</h1>
+            <h3>Let's get started! First, let's get to know you a little.</h3>
             <Grid container spacing={2}>
             <Grid item>
                 <TextField
