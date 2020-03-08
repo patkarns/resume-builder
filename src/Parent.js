@@ -6,7 +6,8 @@ import Education from './Components/Education/Education.js';
 import Skills from './Components/Skills/Skills.js';
 // import Experience from './Components/Experience/Experience.js';
 import Projects from './Components/Projects/Projects.js';
-// import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
+import School from './Components/School/School';
+import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
 import GeneratedResume from './Components/GeneratedResume/GeneratedResume.js';
 import { Stepper, Step, StepLabel, Button, Container } from '@material-ui/core';
 import { PDFViewer } from '@react-pdf/renderer';
@@ -103,7 +104,10 @@ class Parent extends React.Component {
             {(state.activeStep === 1) && <Skills handleChange={this.handleChange} />}
             {/*(state.activeStep === 2) && <Experience /> */}
             {(state.activeStep === 3) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
-            {/*(state.activeStep === 4) && <Extracurriculars />} */}
+            {(state.activeStep === 4) &&
+                <Extracurriculars
+                    handleChange={this.handleChange}
+                />}
             {(state.activeStep === 5) &&
                 <Container>
                     <PDFViewer className="pdf-viewer">
@@ -114,10 +118,7 @@ class Parent extends React.Component {
                     </PDFViewer>
                 </Container>
             }
-            {(state.activeStep === 4) &&
-                <Extracurriculars
-                    handleChange={this.handleChange}
-                />}
+            
         </React.Fragment>
     }
 }
