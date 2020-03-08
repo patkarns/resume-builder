@@ -1,10 +1,7 @@
 import React from 'react';
-import Proptypes from 'prop-types';
 import {TextField, Container, } from '@material-ui/core';
-import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers';
-import { makeStyles } from '@material-ui/core/styles';
+import {MuiPickersUtilsProvider, DatePicker} from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
-import Columns from 'react-columns';
 import Grid from '@material-ui/core/Grid';
 
 import './styles.css';
@@ -12,8 +9,29 @@ import './styles.css';
 class OtherExp extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {}
+      this.state = {
+        startDate: new Date(),
+        endDate: new Date(),
+      }
     }
+
+  handleStartDateChange(startDate) {
+      if (startDate > this.state.endDate) {
+          // make it so that start date cannot be after the end date
+          this.setState({ ...this.state, endDate: startDate, startDate });
+      } else {
+          this.setState({ ...this.state, startDate });
+      }
+  }
+
+  handleEndDateChange(endDate) {
+      if (endDate < this.state.startDate) {
+          // make it so that end date cannot be before the start date
+          this.setState({ ...this.state, startDate: endDate, endDate});
+      } else {
+          this.setState({ ...this.state, endDate });
+      }
+  }
 
   render() {
     return ( <Container>
@@ -35,23 +53,27 @@ class OtherExp extends React.Component {
 
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <Grid item xs={6}>
-        <KeyboardDatePicker
+        <DatePicker
           disableToolbar
           variant="inline"
-          format="MM/dd/yyyy"
           margin="normal"
+          inputVariant="outlined"
           id="date-picker-inline"
+          onChange={this.handleStartDateChange.bind(this)}
           label="Start date"
+          value={this.state.startDate}
         />
         </Grid>
         <Grid item xs={6}>
-        <KeyboardDatePicker
+        <DatePicker
           disableToolbar
           variant="inline"
-          format="MM/dd/yyyy"
           margin="normal"
+          inputVariant="outlined"
           id="date-picker-inline"
+          onChange={this.handleEndDateChange.bind(this)}
           label="End date"
+          value={this.state.endDate}
         />
         </Grid>
 
@@ -60,6 +82,7 @@ class OtherExp extends React.Component {
       <TextField
         fullWidth
         id="standard-multiline-flexible"
+        variant='outlined'
         label='Main responsibilites/achievements'
         multiline
         rowsMax="4"
