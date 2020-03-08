@@ -21,8 +21,10 @@ class Extracurriculars extends React.Component {
 
     render() {
       return <Container>
+          <h4 style = {{paddingBottom: 30, fontStyle: 'italic', letterSpacing: 3, color: '#A187E8'}}>“I try to live in a little bit of my own joy and not let people steal it or take it.” ~ Hoda Kotb</h4>
           <h1 style = {{letterSpacing: 10 }}> ❦ EXTRACURRICULARS </h1>
           <h3> What do you do outside of school and work? Pick a category and talk about your passions! </h3>
+          <h4 style = {{fontStyle: 'italic', color: '#A187E8'}}>Tips: Demonstrate that you're well-rounded outside of academics and work!</h4>
           <Selector
             handleChange={this.props.handleChange}
             label={'Activity Type'}
