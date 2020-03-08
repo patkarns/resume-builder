@@ -123,8 +123,8 @@ class Parent extends React.Component {
                         </Step>
                     ))}
                 </Stepper>
-                <Button disabled={state.activeStep < 1} onClick={this.handlePrev}>Prev</Button>
-                <Button disabled={state.activeStep > 5} onClick={this.handleNext}>Next</Button>
+                <Button style={{buttonAlign: 'center', color: '#7959D5', fontSize: 20, letterSpacing: 5, paddingLeft: 50, paddingRight: 50}} disabled={state.activeStep < 1} onClick={this.handlePrev}>Prev</Button>
+                <Button style={{buttonAlign: 'center', color: '#7959D5', fontSize: 20, letterSpacing: 5, paddingLeft: 50, paddingRight: 50}} disabled={state.activeStep > 5} onClick={this.handleNext}>Next</Button>
                 {/* <Button onClick={this.handleSubmit}>Submit</Button> */}
             </Container>
 
