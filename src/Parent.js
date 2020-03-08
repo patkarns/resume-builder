@@ -4,15 +4,19 @@ import React from 'react';
 // import Education from './Education.js';
 import Education from './Components/Education/Education.js';
 import Skills from './Components/Skills/Skills.js';
-// import Experience from './Components/Experience/Experience.js';
+import Experience from './Components/Experience/Education.js';
 import Projects from './Components/Projects/Projects.js';
-import School from './Components/School/School';
 import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
+import School from './Components/School/School';
 import GeneratedResume from './Components/GeneratedResume/GeneratedResume.js';
 import { Stepper, Step, StepLabel, Button, Container } from '@material-ui/core';
 import { PDFViewer } from '@react-pdf/renderer';
 
 import './styles.css';
+
+import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
+import School from './Components/School/School.js';
+
 
 class Parent extends React.Component {
 
@@ -25,7 +29,7 @@ class Parent extends React.Component {
         this.addSchool = this.addSchool.bind(this);
 
         this.state = {
-            activeStep: 3,
+            activeStep: 1,
             steps: ['Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars', 'Generate!'],
             educationChanges: {},
             skillChanges: {},
@@ -50,11 +54,13 @@ class Parent extends React.Component {
             Object.keys(changes).map(changedAttribute => {
                 return educationChanges[changedAttribute] = changes[changedAttribute];
             });
+            console.log('skillChanges')
             return await this.setState({ ...this.state, educationChanges });
         } else if (step === 1) {
             const skillChanges = { ...this.state.skillChanges };
             Object.keys(changes).map(changedAttribute => {
-                return skillChanges[changedAttribute] = changes[changedAttribute];
+                console.log('skillChanges')
+                skillChanges[changedAttribute] = changes[changedAttribute];
             });
             return await this.setState({ ...this.state, skillChanges });
         } else if (step === 2) {
@@ -64,8 +70,6 @@ class Parent extends React.Component {
             const projectChanges = [ ...changes ];
             return await this.setState({ ...this.state, projectChanges });
         }
-
-        
     }
 
     addSchool() {
@@ -102,8 +106,6 @@ class Parent extends React.Component {
                     addSchool={this.addSchool}
                 />}
             {(state.activeStep === 1) && <Skills handleChange={this.handleChange} />}
-            {/*(state.activeStep === 2) && <Experience /> */}
-            {(state.activeStep === 3) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
             {(state.activeStep === 4) &&
                 <Extracurriculars
                     handleChange={this.handleChange}

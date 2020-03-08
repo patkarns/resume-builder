@@ -95,10 +95,9 @@ class Skills extends React.Component {
       return { title, category: 3 };
     });
     list = list.concat(_3D_computer_graphics);
-
     return await this.setState( {...this.state, list });
   }
-
+  
   async onDeleteChip(category, title) {
     const selectedSkills = { ...this.state.selectedSkills };
     delete selectedSkills[category][title];
