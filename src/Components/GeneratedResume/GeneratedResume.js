@@ -111,29 +111,48 @@ class GeneratedResume extends React.Component {
     this.state = {
       skillChanges: {},
       educationChanges: {},
+      projectChanges: [],
     }
   }
 
   async componentDidMount() {
     const educationChanges = this.props.educationChanges;
     const skillChanges = this.props.skillChanges;
-    return await this.setState({...this.state, educationChanges, skillChanges });
+    const projectChanges = this.props.projectChanges;
+    console.log('generator 0', skillChanges, projectChanges)
+    return await this.setState({...this.state, educationChanges, skillChanges, projectChanges });
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     const newState = { ...this.state };
+    let setState = false;
     if (this.props.educationChanges !== prevProps.educationChanges) {
       newState.educationChanges = this.props.educationChanges;
+      setState = true;
     }
     if (this.props.skillChanges !== prevProps.skillChanges) {
       newState.skillChanges = this.props.skillChanges;
+      setState = true;
     }
+    if (this.props.projectChanges !== prevProps.projectChanges) {
+      newState.projectChanges  = this.props.projectChanges;
+      setState = true;
+    }
+    console.log('generator 1', this.props.skillChanges, this.props.projectChanges)
+    if (setState) return await this.setState(newState);
   }
 
   render() {
     const { props, state } = this; 
     console.log('hi', (Object.keys(state.skillChanges).length > 0), props.educationChanges, props.skillChanges);
+    // const projects = state.projectChanges.map(projectChange => {
+    //   const date = '';
 
+    //   <React.Fragment>
+    //     <Text style={styles.header3}>{projectChange.name}</Text>
+    //     <Text style={styles.header3}>{projectChange.startMonth ? `${projectChange.startMonth}-${projectChange.startYear}` : projectChange.startYear}</Text>
+    //   </React.Fragment>
+    // })
     return <Document>
       <Page size="LETTER" style={styles.page}>
       <View style={styles.view}>
@@ -143,6 +162,7 @@ class GeneratedResume extends React.Component {
           <Text style={styles.header4}>Insert some text here.</Text>
           <Text style={styles.header2}>SKILLS</Text>
           <Text style={styles.header35}>Skill 1            |           Skill 2           |            Skill 3</Text>
+          <Text style={styles.header3}>Insert some text here.</Text>
           <Text style={styles.header2}>EXPERIENCE</Text>
           <Text style={styles.header3}>Insert some text here.</Text>
           <Text style={styles.header4}>Insert some text here.</Text>
@@ -171,6 +191,7 @@ class GeneratedResume extends React.Component {
   GeneratedResume.propTypes = {
     educationChanges: PropTypes.object.isRequired,
     skillChanges: PropTypes.object.isRequired,
+    projectChanges: PropTypes.object.isRequired,
   };
 
   export default GeneratedResume;

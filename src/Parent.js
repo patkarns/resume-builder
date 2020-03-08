@@ -3,7 +3,7 @@ import React from 'react';
 
 // import Education from './Education.js';
 import Education from './Components/Education/Education.js';
-
+import Experience from './Components/Experience/Experience.js';
 import Skills from './Components/Skills/Skills.js';
 import TechExp from './Components/TechExp/TechExp.js'
 import OtherExp from './Components/OtherExp/OtherExp.js'
@@ -154,6 +154,7 @@ class Parent extends React.Component {
                             <GeneratedResume
                                 educationChanges={state.educationChanges}
                                 skillChanges={state.skillChanges}
+                                projectChanges={state.projectChanges}
                             />
                         </PDFViewer>
                     </Container>
