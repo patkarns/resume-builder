@@ -8,19 +8,24 @@ import Education from './Components/Education/Education.js';
 // import Projects from './Components/Projects/Education.js';
 // import Extracurriculars from './Components/Extracurriculars/Extracurriculars.js';
 import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
+import School from './Components/School/School.js';
 
 class Parent extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.handlePrev = this.handlePrev.bind(this);
+        this.handleNext = this.handleNext.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.addSchool = this.addSchool.bind(this);
+
         this.state = {
             activeStep: 0,
             steps: ['Education', 'Skills', 'Experience', 'Projects', 'Extracurriculars'],
             educationChanges: {},
+            schools: [<School key={1} handleChange={this.handleChange}/>],
         }
-        this.handlePrev = this.handlePrev.bind(this);
-        this.handleNext = this.handleNext.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
 
     async handlePrev(index) {
@@ -43,6 +48,18 @@ class Parent extends React.Component {
         }
     }
 
+    addSchool() {
+        this.setState(
+            {
+                ...this.state,
+                schools: [
+                    ...this.state.schools,
+                    <School key={this.state.schools.length + 1} handleChange={this.handleChange}/>
+                ]
+            }
+        );
+    }
+
     render() {
         const { state } = this;
         return <React.Fragment>
@@ -58,6 +75,8 @@ class Parent extends React.Component {
             {(state.activeStep === 0) && 
                 <Education
                     handleChange={this.handleChange}
+                    schools={this.state.schools}
+                    addSchool={this.addSchool}
                 />}
             {/* {(state.activeStep === 1) && <Skills />}
             {(state.activeStep === 2) && <Experience />}
