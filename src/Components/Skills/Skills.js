@@ -45,11 +45,16 @@ class Skills extends React.Component {
       selectedSkills: {},
       list: [],
     }
+    this.loadList = this.loadList.bind(this);
     this.onSelectedChange = this.onSelectedChange.bind(this);
     this.onDeleteChip = this.onDeleteChip.bind(this);
   }
 
   async componentDidMount() {
+    return await this.loadList();
+  }
+
+  async loadList() {
     let list = [];
     const objectOriented = 'object-oriented';
     const objectOrientedLanguages = programming_skills[objectOriented].map(title => {

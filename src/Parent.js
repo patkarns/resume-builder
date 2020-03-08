@@ -35,7 +35,6 @@ class Parent extends React.Component {
 
     async handleNext() {
         const activeStep = this.state.activeStep + 1;
-        console.log('activeStep', activeStep)
         await this.setState({ ...this.state, activeStep });
     }
 
@@ -45,12 +44,10 @@ class Parent extends React.Component {
             Object.keys(changes).map(changedAttribute => {
                 educationChanges[changedAttribute] = changes[changedAttribute];
             });
-            console.log('skillChanges')
             return await this.setState({ ...this.state, educationChanges });
         } else if (step === 1) {
             const skillChanges = { ...this.state.educationChanges };
             Object.keys(changes).map(changedAttribute => {
-                console.log('skillChanges')
                 skillChanges[changedAttribute] = changes[changedAttribute];
             });
             return await this.setState({ ...this.state, skillChanges });
@@ -60,11 +57,7 @@ class Parent extends React.Component {
 
         
     }
-
-    async handleSubmit() {
-
-    }
-
+    
     render() {
         const { state } = this;
         return <React.Fragment>
