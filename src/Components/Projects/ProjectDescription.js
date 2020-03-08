@@ -81,7 +81,7 @@ class ProjectDescription extends React.Component {
     const { props, state } = this;
     return (<Container>
       <h3> What's something you created that you're proud of? What effects did it have on yourself/others?</h3>
-      <TextField label='Describe it!' margin='normal' fullWidth multiline={true} valueDefault={state.currentDescription} onChange={(e) => this.handleChange(e)} />
+      <TextField label='Describe it!' variant='outlined' margin='normal' fullWidth multiline={true} valueDefault={state.currentDescription} onChange={(e) => this.handleChange(e)} />
       <p> {`Character Count: 
         ${state.currentDescription ?
           state.currentDescription.length : 0}`}
