@@ -133,32 +133,32 @@ class Parent extends React.Component {
                     ))}
                 </Stepper>
                 <Button style={{buttonAlign: 'center', color: '#7959D5', fontSize: 20, letterSpacing: 5, paddingLeft: 50, paddingRight: 50}} disabled={state.activeStep < 1} onClick={this.handlePrev}>Prev</Button>
-                <Button style={{buttonAlign: 'center', color: '#7959D5', fontSize: 20, letterSpacing: 5, paddingLeft: 50, paddingRight: 50}} disabled={state.activeStep > 6} onClick={this.handleNext}>Next</Button>
+                <Button style={{buttonAlign: 'center', color: '#7959D5', fontSize: 20, letterSpacing: 5, paddingLeft: 50, paddingRight: 50}} disabled={state.activeStep > 5} onClick={this.handleNext}>Next</Button>
                 {/* <Button onClick={this.handleSubmit}>Submit</Button> */}
             </Container>}
 
             <Container className="content-container">
-                {(state.activeStep === 1 && <AboutYou handleChange={this.handleChange} />)}
-                {(state.activeStep === 2) &&
+                {(state.activeStep === 0 && <AboutYou handleChange={this.handleChange} />)}
+                {(state.activeStep === 1) &&
                     <Education
                         handleChange={this.handleChange}
                         schools={this.state.schools}
                         addSchool={this.addSchool}
                     />}
-                {(state.activeStep === 3) && <Skills handleChange={this.handleChange} skillChanges={state.skillChanges} />}
-                {(state.activeStep === 4) && 
+                {(state.activeStep === 2) && <Skills handleChange={this.handleChange} skillChanges={state.skillChanges} />}
+                {(state.activeStep === 3) &&
               <Experience
               TechExp={this.state.TechExp}
               addTechExp={this.addTechExp}
               OtherExp={this.state.OtherExp}
               addOtherExp={this.addOtherExp}
             />}
-                {(state.activeStep === 5) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
-                {(state.activeStep === 6) &&
+                {(state.activeStep === 4) && <Projects handleChange={this.handleChange} projectChanges={state.projectChanges} />}
+                {(state.activeStep === 5) &&
                     <Extracurriculars
                         handleChange={this.handleChange}
                     />}
-                {(state.activeStep === 7) &&
+                {(state.activeStep === 6) &&
                     <Container>
                         <PDFViewer className="pdf-viewer">
                             <GeneratedResume
